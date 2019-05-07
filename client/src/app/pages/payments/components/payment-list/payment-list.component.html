@@ -1,3 +1,35 @@
-<p>
-  payment-list works!
-</p>
+<!-- {{payments | json }} -->
+<!-- <div nz-row nzGutter="8"> -->
+<!-- <div nz-col nzSpan="24"> -->
+  <h2 i18n>Payments</h2>
+  <!-- </div> -->
+  
+  <div class="wrapper" *ngIf="payments.length >= 1">
+    <div class="payment" *ngFor="let payment of payments; let i=index">
+  
+      <div class="merchant">
+        <strong i18n>Merchant:</strong> {{payment.merchant}}
+      </div>
+      <div class="name">
+        <strong i18n>Full Name:</strong> {{payment.user.first}} {{payment.user.last}}
+      </div>
+      <div class="date">
+        <strong i18n>Date:</strong> {{payment.date | date}}
+      </div>
+  
+      <div class="more">
+        <a nz-button nzBlock="true" nzType="primary" (click)="selectPayment(payment)">View More</a>
+      </div>
+  
+    </div>
+  </div>
+  <div *ngIf="payments.length < 1">
+    <div nz-row nzType="flex" nzGutter="0" nzAlign="middle" nzJustify="space-around">
+      <div nz-col nzSpan="12" style="font-size: 4em; text-align: center">
+        <h1>404</h1>
+        <P>Go back to <a routerLink="/">Home Page</a> </P>
+      </div>
+    </div>
+  </div>
+  <br>
+  <!-- </div> -->

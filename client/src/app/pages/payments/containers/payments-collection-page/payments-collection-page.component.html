@@ -1,3 +1,6 @@
-<p>
-  payments-collection-page works!
-</p>
+<asin-payment-search (query)="search($event)"></asin-payment-search>
+
+<asin-payment-list [payments]="payments$" [totalPages]="totalPages" (selectedPayment)="viewPayment($event)"></asin-payment-list>
+
+<!-- <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="totalPages$" [nzPageSize]="25"
+    (nzPageIndexChange)="getPayments($event)"></nz-pagination> -->

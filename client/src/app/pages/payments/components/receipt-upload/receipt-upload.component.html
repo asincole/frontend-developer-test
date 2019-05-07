@@ -1,3 +1,14 @@
-<p>
-  receipt-upload works!
-</p>
+<h3>Add Receipt</h3>
+<nz-upload nzName="receipt" nzType="drag" [nzLimit]="1" [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+  <p class="ant-upload-drag-icon">
+    <i nz-icon type="inbox"></i>
+  </p>
+  <p class="ant-upload-text">Click or drag file to this area to upload</p>
+  <p class="ant-upload-hint">
+    Upload receipt here
+  </p>
+</nz-upload>
+<br>
+<button nz-button [nzType]="'primary'" nzBlock="true" (click)="handleUpload()" [disabled]="fileList.length == 0">
+  Upload Receipt
+</button>

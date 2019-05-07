@@ -1,3 +1,8 @@
-<p>
-  comment-edit works!
-</p>
+<h3>Edit Comment</h3>
+<form [formGroup]="commentForm">
+  <textarea rows="4" nz-input formControlName="comment"></textarea>
+  <nz-form-explain style="color: #fb0707"
+    *ngIf="commentForm.get('comment')?.dirty && commentForm.get('comment')?.errors">Please add a comment
+  </nz-form-explain>
+  <button nz-button nzType="primary" nzBlock="true" [nzLoading]="loading" (click)="submit()">Submit</button>
+</form>

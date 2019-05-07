@@ -1,3 +1,59 @@
-<p>
-  payment-detail works!
-</p>
+<!-- {{payment | json}}
+<h2>Payment {{payment.id}} Details</h2>
+<div class="wrapper">
+  
+</div> -->
+
+<div nz-row nzGutter="0">
+  <div nz-col nzXs="24" nzMd="12">
+    <div class="payment-detail">
+      <div class="merchant">
+        <strong>Merchant:</strong> {{payment.merchant}}
+      </div>
+      <div class="name">
+        <strong>First Name:</strong> {{payment.user.first}} <strong>Last Name:</strong> {{payment.user.last}} <br>
+        <strong>Mail:</strong> {{payment.user.email}}
+      </div>
+      <div class="date">
+        <strong>Date:</strong> {{payment.date | date}} <br>
+        <strong>Amount:</strong> {{ payment.amount.value | currency:payment.amount.currency }} <br>
+        <strong *ngIf="payment.category">Category:</strong> {{payment.category}} <br>
+        <strong *ngIf="payment.receipts.length >= 1">Receipts:</strong> <br>
+        <ul *ngIf="payment.receipts.length >= 1">
+          <li *ngFor="let receipt of payment.receipts; let i=index">
+            <a href="http://localhost:3000/payments/{{payment.id}}/{{receipt.url}}" target="_blank"
+              rel="noopener noreferrer">{{receipt.url}}</a>
+          </li>
+        </ul>
+        <strong *ngIf="payment.comment">Comment:</strong> {{payment.comment}}
+
+
+      </div>
+
+
+      <div class="actions">
+
+        <button nz-button nzType="primary" (click)="commentModalToggle()">Add Comment</button>
+
+        <nz-modal [nzFooter]="null" [(nzVisible)]="showCommentModal" (nzOnCancel)="commentModalToggle()">
+          <asin-comment-edit (commentEdit)="updateComment($event)"></asin-comment-edit>
+        </nz-modal>
+
+        <button nz-button nzType="primary" (click)="receiptModalToggle()">Add Receipt</button>
+
+        <nz-modal [nzFooter]="null" [(nzVisible)]="showReceiptModal" (nzOnCancel)="receiptModalToggle()">
+          <asin-receipt-upload (receipt)="addReceipt($event)" id="{{payment.id}}"></asin-receipt-upload>
+        </nz-modal>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div nz-col nzXs="24" nzMd="12">
+    <div class="payment-edit">
+      <!-- <asin-comment-edit id="{{payment.id}}"></asin-comment-edit> -->
+    </div>
+  </div>
+</div>
