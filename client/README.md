@@ -1,3 +1,14 @@
+# Brief Project Description
+
+It was nice working on this mini project. It has taken me about 9 days to submit this though it took about 4 to 5 days to work on it as 
+I had a tight schedule during this period. Hardest part to implement? Not sure I will use the word "hard" but basically, state management 
+always has it's own added complexities (I made use of NgRx). Functionalities I'm proud of? Probably State management, lol.
+
+I do hope you like what I have done.
+
+Sidenote: while this was generated with Angular CLI 7.3.8 as it says below, I did upgrade it to the latest Release Candidate which is version
+8. Prefer the lazy loading syntax and wanted to try out some of the improvements as well.
+
 # Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
