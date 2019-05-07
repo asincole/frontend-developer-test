@@ -32,6 +32,7 @@ export class CommentEditComponent implements OnInit {
     } else {
       // this.loading = true;
       this.commentEdit.emit(this.commentForm.get('comment').value);
+      this.commentForm.reset();
     }
   }
 

@@ -14,13 +14,13 @@ import { State, getPayments, getTotalPayments } from '../../state/payment.reduce
 export class PaymentsCollectionPageComponent implements OnInit, OnDestroy {
 
 
-  payments: Payment[];
-  totalPages: number;
-  currentPage = 1;
+  // payments: Payment[];
+  // totalPages: number;
+  // currentPage = 1;
   componentActive = true;
   payments$: Payment[];
   totalPages$: number;
-  currentQuery = false;
+  // currentQuery = false;
   tempStore$: Payment[];
 
 
@@ -31,9 +31,10 @@ export class PaymentsCollectionPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-
+    // dispatch action to get payments list
     this.store.dispatch(new CheckPaymentsTotal());
 
+    // subscribe to selector that gets list of payments and set our temp store to the emitted value
     this.store.pipe(
       select(getPayments),
       takeWhile(() => this.componentActive)
@@ -42,36 +43,38 @@ export class PaymentsCollectionPageComponent implements OnInit, OnDestroy {
       this.payments$ = this.tempStore$;
     });
 
-    this.store.pipe(
-      select(getTotalPayments),
-      takeWhile(() => this.componentActive)
-    ).subscribe(totalPages => this.totalPages$ = totalPages);
+    // this.store.pipe(
+    //   select(getTotalPayments),
+    //   takeWhile(() => this.componentActive)
+    // ).subscribe(totalPages => this.totalPages$ = totalPages);
 
   }
 
+  // unsubscribe from observables
   ngOnDestroy() {
     this.componentActive = false;
   }
 
+  // set current payment to payment selected and navigate to detail page
   viewPayment(payment: Payment) {
     this.store.dispatch(new SetCurrentPayment(payment));
     this.router.navigateByUrl('/payments/detail');
   }
 
+  // search component emits search text and calls this function that filters the payment array and returns results to user
   search(query: string) {
     if (query.length >= 1) {
-      this.currentQuery = true;
+      // this.currentQuery = true;
       this.payments$ = this.tempStore$.filter((payment) => {
-        return payment.merchant.includes(query)
-          || payment.user.first.includes(query)
-          || payment.user.last.includes(query)
-          || payment.user.email.includes(query)
+        return payment.merchant.toLowerCase().includes(query)
+          || payment.user.first.toLowerCase().includes(query)
+          || payment.user.last.toLowerCase().includes(query)
+          || payment.user.email.toLowerCase().includes(query)
           ;
       });
     } else {
       this.payments$ = this.tempStore$;
     }
-    // this.router.navigate(['/payments/search', { search: query }]);
   }
 
 

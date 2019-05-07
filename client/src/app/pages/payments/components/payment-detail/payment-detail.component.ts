@@ -23,10 +23,12 @@ export class PaymentDetailComponent implements OnInit {
 
   updateComment(comment: string) {
     this.commentUpdate.emit(comment);
+    this.commentModalToggle();
   }
 
   addReceipt(payment) {
     this.receipt.emit(payment);
+    this.receiptModalToggle();
   }
 
   commentModalToggle() {

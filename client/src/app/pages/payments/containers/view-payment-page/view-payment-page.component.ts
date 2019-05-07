@@ -40,17 +40,21 @@ export class ViewPaymentPageComponent implements OnInit, OnDestroy {
     this.componentActive = false;
   }
 
+  // update payment gets called when either component that edits comments of the one that adds receipts emits a value
   updatePayment(paymentEdit: any) {
     const payload: { type: string, id: string, edit: string } = {
       type: null,
       id: this.payment.id,
       edit: paymentEdit
     };
+    // check emitted value, if it's of type string then it must be the comment being edited
     if (typeof paymentEdit === 'string') {
       payload.type = 'comment';
+      // else it has to be a recipt being added 
     } else {
       payload.type = 'receipt';
     }
+    // dispatch action to edit payment
     this.store.dispatch(new UpdatePayment(payload));
   }
 

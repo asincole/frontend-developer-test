@@ -1,0 +1,39 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;  
+  
+  .payment {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .merchant {
+    flex: 1;
+  }
+  
+}
+
+@media screen and (min-width: 400px) {
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .wrapper {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .wrapper {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

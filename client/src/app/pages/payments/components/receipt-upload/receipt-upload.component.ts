@@ -31,6 +31,7 @@ export class ReceiptUploadComponent implements OnInit {
     });
 
     this.receipt.emit(formData);
+    this.fileList = [];
   }
 
 }

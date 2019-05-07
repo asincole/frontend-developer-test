@@ -61,18 +61,18 @@ export function reducer(state = initialState, action: PaymentActions): PaymentSt
                 error: action.payload
             };
 
-        case PaymentActionTypes.SearchPayments:
-            const result = state.payments.filter((payment) => {
-                // return payment.merchant.toLowerCase() === action.payload
-                return payment.user.first.toLowerCase() === action.payload
-                    // || payment.user.last.toLowerCase() === action.payload
-                    // || payment.user.email.toLowerCase() === action.payload
-                    ;
-            });
-            return {
-                ...state,
-                searchResults: result
-            };
+        // case PaymentActionTypes.SearchPayments:
+        //     const result = state.payments.filter((payment) => {
+        //         // return payment.merchant.toLowerCase() === action.payload
+        //         return payment.user.first.toLowerCase() === action.payload
+        //             // || payment.user.last.toLowerCase() === action.payload
+        //             // || payment.user.email.toLowerCase() === action.payload
+        //             ;
+        //     });
+        //     return {
+        //         ...state,
+        //         searchResults: result
+        //     };
 
 
         default:
@@ -95,9 +95,9 @@ export const getCurrentPaymentId = createSelector(getPaymentFeatureState, (state
     return state.currentPaymentId;
 });
 
-export const getSearchResults = createSelector(getPaymentFeatureState, (state: PaymentState) => {
-    return state.searchResults;
-});
+// export const getSearchResults = createSelector(getPaymentFeatureState, (state: PaymentState) => {
+//     return state.searchResults;
+// });
 
 export const getCurrentPayment = createSelector(getPaymentFeatureState, getCurrentPaymentId, (state: PaymentState, currentPaymentId) => {
     if (!currentPaymentId) {
