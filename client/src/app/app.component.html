@@ -1,4 +1,15 @@
-<!-- NG-ZORRO -->
-<a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
-  <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
-</a>
+<nz-layout class="layout">
+  <nz-content>
+      <nz-header style="height: 46px;">
+          <ul nz-menu nzMode="horizontal" nzTheme="dark">
+              <li nz-menu-item routerLink="/" routerLinkActive="ant-menu-item-selected"
+                  routerLinkActiveOptions="{ exact: boolean}">Home</li>
+          </ul>
+      </nz-header>
+      <div [@routeAnimations]="prepareRoute(outlet)" style="background:#fff; padding: 24px; min-height: 380px;">
+          <router-outlet #outlet="outlet"></router-outlet>
+      </div>
+  </nz-content>
+  <nz-footer style="text-align: center;">©{{year}} Implemented By A-sin Cole</nz-footer>
+</nz-layout>
+<nz-back-top></nz-back-top>
