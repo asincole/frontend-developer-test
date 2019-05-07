@@ -50,7 +50,7 @@ export class ViewPaymentPageComponent implements OnInit, OnDestroy {
     // check emitted value, if it's of type string then it must be the comment being edited
     if (typeof paymentEdit === 'string') {
       payload.type = 'comment';
-      // else it has to be a recipt being added 
+      // else it has to be a recipt being added
     } else {
       payload.type = 'receipt';
     }

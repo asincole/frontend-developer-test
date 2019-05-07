@@ -12,7 +12,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 @Injectable()
 export class PaymentEffects {
     // since client side fitering is required and API does not return all data which should actually be the case
-    // this makes a first call, basically to check the amount of payments that exists then dispatches the load action 
+    // this makes a first call, basically to check the amount of payments that exists then dispatches the load action
     // setting its limit to be the total number payments discovered
     // looks better than calling the API recursively
     @Effect()
@@ -40,7 +40,7 @@ export class PaymentEffects {
                 ))
         );
 
-    // update payment 
+    // update payment
     @Effect()
     updatePayments$ = this.actions$
         .pipe(
